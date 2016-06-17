@@ -20,6 +20,7 @@
                 <a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a th:href="@{/}">Explore</a></li>
+                    <li><a th:href="@{/addnew}" >Add</a></li>
                     <li><a th:href="@{/categories}">Categories</a></li>
                     <li class="active"><a th:href="@{/favorites}">Favorites</a></li>
                 </ul>
@@ -52,6 +53,13 @@
                 </a>
             </div>
         </div>
+    </div>
+
+    <div class="notfound">
+      The page is temporary in development
+        <br/>
+    
+      <img src="/gifs/cat_ok.gif"/>
     </div>
 
 <script th:src="@{/vendor/jquery/jquery-1.11.3.js}"></script>

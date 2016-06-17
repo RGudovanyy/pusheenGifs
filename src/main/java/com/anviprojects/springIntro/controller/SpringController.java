@@ -33,6 +33,16 @@ public class SpringController {
         modelMap.put("gif",gif);
         return "gif-details";
     }
+
+    @RequestMapping("/addnew")
+    public String addNewGif(ModelMap modelMap){
+        return "addnew";
+    }
+
+    @RequestMapping("/favorites")
+    public String favoritesGifs(ModelMap modelMap){
+        return "favorites";
+    }
 }
 
 

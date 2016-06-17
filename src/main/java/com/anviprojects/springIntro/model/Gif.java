@@ -1,10 +1,21 @@
 package com.anviprojects.springIntro.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Gif {
-    private String name;
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
     private int categoryId;
+    private String name;
     private LocalDate dateUploaded;
     private String username;
     private boolean favorite;
@@ -15,6 +26,14 @@ public class Gif {
         this.username = username;
         this.dateUploaded = dateUploaded;
         this.favorite = favorite;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public int getCategoryId() {
@@ -29,8 +48,16 @@ public class Gif {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public LocalDate getDateUploaded() {
         return dateUploaded;
+    }
+
+    public void setDateUploaded(LocalDate dateUploaded) {
+        this.dateUploaded = dateUploaded;
     }
 
     public String getUsername() {
@@ -39,14 +66,6 @@ public class Gif {
 
     public boolean isFavorite() {
         return favorite;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDateUploaded(LocalDate dateUploaded) {
-        this.dateUploaded = dateUploaded;
     }
 
     public void setUsername(String username) {
