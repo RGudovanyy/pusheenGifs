@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="icon" th:href="@{/favicon.png}" />
+
+    <link rel="stylesheet" th:href="@{/vendor/materialize/css/materialize.css}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" th:href="@{/app.css}" />
+
+
+
+    <title>Pushin gifs | Home</title>
+
+</head>
+<body>
+<div class="navbar-fixed">
+    <nav>
+        <div class="container">
+            <a th:href="@{/}" class="brand-logo">Pusheen<span>.</span>gifs</a>
+            <a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a th:href="@{/}">Explore</a></li>
+                <li class="active"><a th:href="@{/addnew}" >Add</a></li>>
+                <li><a th:href="@{/categories}">Categories</a></li>
+                <li><a th:href="@{/favorites}">Favorites</a></li>
+            </ul>
+            <ul id="mobile-nav" class="side-nav">
+                <li class="active"><a th:href="@{/}">Explore</a></li>
+                <li><a th:href="@{/categories}">Categories</a></li>
+                <li><a th:href="@{/favorites}">Favorites</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="search-bar container">
+    <div class="row">
+        <div class="col s12">
+            <form action="#" method="get" >
+                <div class="input-field">
+                    <input name="q" type="search" placeholder="Search all gifs..." required="required" autocomplete="off"/>
+                    <i class="material-icons">search</i>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="add-form container">
+    <form id="form" th:object="${gif}" th:action="@{/gif}" method="post" enctype="multipart/form-data">
+        <div>
+            <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" th:field="*{username}" value="Anvi"/>
+            <input type="hidden" th:field="*{favorite}" value="false"/>
+            <input type="hidden" th:field="*{dateUploaded}" value="LocalDate.of(2016,6,18)"/>
+          <ul id="gifaddform">
+            <li><input type='file' size="2" /></li>
+            <li><input id="gifname" name="gifname" type="text" placeholder="Type the name of yur gif..." th:field="*{name}"/></li>
+              <li>Please choose the category:</li>
+            <li><select class="gifcategory" name="gifcategory" th:field="*{categoryId}">
+              <option value="option">1</option>
+              <option value="option">2</option>
+              <option value="option">3</option>
+            </select>
+            </li>
+            <li><input type="reset" name="reset" value="Reset" onClick="window.location.href=window.location.href" /><input type="submit" name="upload" value="Upload..."/></li>
+            <li></li>
+          </ul>
+
+          <input type="button" hidden="hidden" value="q"/> <!-- Без этой хрени картинка предпросмотра располагается некорректно -->
+
+        </div>
+    </form>
+
+
+</div>
+
+
+<script th:src="@{/vendor/jquery/jquery-1.11.3.js}"></script>
+<script th:src="@{/vendor/materialize/js/materialize.js}"></script>
+<script th:src="@{/app.js}"></script>
+
+<script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+
+</body>
+</html>

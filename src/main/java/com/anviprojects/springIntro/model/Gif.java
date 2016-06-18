@@ -28,6 +28,9 @@ public class Gif {
         this.favorite = favorite;
     }
 
+    public Gif() {
+    }
+
     public Integer getId() {
         return id;
     }
