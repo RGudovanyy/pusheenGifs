@@ -52,19 +52,19 @@
     <form id="form" th:object="${gif}" th:action="@{/gif}" method="post" enctype="multipart/form-data">
         <div>
             <input type="hidden" th:field="*{id}"/>
-            <input type="hidden" th:field="*{username}" value="Anvi"/>
             <input type="hidden" th:field="*{favorite}" value="false"/>
-            <input type="hidden" th:field="*{dateUploaded}" value="LocalDate.of(2016,6,18)"/>
+            <input type="hidden" th:field="*{categoryId}" value="1"/>
           <ul id="gifaddform">
             <li><input type='file' size="2" /></li>
-            <li><input id="gifname" name="gifname" type="text" placeholder="Type the name of yur gif..." th:field="*{name}"/></li>
+            <li><input id="gifname" name="gifname" type="text" placeholder="Type the name of your gif..." th:field="*{name}"/></li>
               <li>Please choose the category:</li>
-            <li><select class="gifcategory" name="gifcategory" th:field="*{categoryId}">
+
+            <!--<li><select class="gifcategory" name="gifcategory" th:field="*{categoryId}">
               <option value="option">1</option>
               <option value="option">2</option>
               <option value="option">3</option>
             </select>
-            </li>
+          </li>-->
             <li><input type="reset" name="reset" value="Reset" onClick="window.location.href=window.location.href" /><input type="submit" name="upload" value="Upload..."/></li>
             <li></li>
           </ul>
