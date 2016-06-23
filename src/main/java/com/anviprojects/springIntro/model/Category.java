@@ -1,12 +1,21 @@
 package com.anviprojects.springIntro.model;
 
-public class Category {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+@Entity
+public class Category implements Serializable {
+    @Id
     private int id;
     private String name;
 
     public Category(int id, String name) {
         this.name = name;
         this.id = id;
+    }
+
+    public Category() {
     }
 
     public int getId() {

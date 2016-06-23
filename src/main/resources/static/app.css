@@ -250,8 +250,8 @@ nav ul li.active, nav ul li:hover {
   background: #f7f5fa;
   border: 1px solid #dad7de;
   border-radius: 4px;
-  height: 35px;
-  width: 25%;
+  height: 30px;
+  width: 200px;
 }
 
 input[type="submit"]{
@@ -268,7 +268,7 @@ input[type="file"]{
   position: fixed;
   size: 20px;
   top: 25%;
-  left: 35%;
+  left: 30%;
 }
 .notfound img{
   margin-top: 2em;

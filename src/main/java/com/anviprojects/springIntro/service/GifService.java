@@ -13,4 +13,6 @@ public interface GifService {
     Gif getGifById(Integer id);
 
     Gif getGifByName(String name);
+
+    public Iterable<Gif> getGifsByCategoryId(Integer categoryId);
 }

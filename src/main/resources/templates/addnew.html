@@ -23,7 +23,7 @@
             <a href="#" data-activates="mobile-nav" class="button-collapse right"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a th:href="@{/}">Explore</a></li>
-                <li class="active"><a th:href="@{/addnew}" >Add</a></li>>
+                <li class="active"><a th:href="@{/addnew}" >Add</a></li>
                 <li><a th:href="@{/categories}">Categories</a></li>
                 <li><a th:href="@{/favorites}">Favorites</a></li>
             </ul>
@@ -52,20 +52,21 @@
     <form id="form" th:object="${gif}" th:action="@{/gif}" method="post" enctype="multipart/form-data">
         <div>
             <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" th:field="*{username}" value="Anvi"/>
             <input type="hidden" th:field="*{favorite}" value="false"/>
-            <input type="hidden" th:field="*{categoryId}" value="1"/>
+            <!--<input type="hidden" th:field="*{categoryId}" value="1"/>-->
           <ul id="gifaddform">
-            <li><input type='file' size="2" /></li>
-            <li><input id="gifname" name="gifname" type="text" placeholder="Type the name of your gif..." th:field="*{name}"/></li>
-              <li>Please choose the category:</li>
+              <li><input type='file' name="file" size="2" /></li>
+              <li><select th:field="*{categoryId}" >
+                  <option value="0">Select category</option>
+                  <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.name}">Category</option>
 
-            <!--<li><select class="gifcategory" name="gifcategory" th:field="*{categoryId}">
-              <option value="option">1</option>
-              <option value="option">2</option>
-              <option value="option">3</option>
-            </select>
-          </li>-->
-            <li><input type="reset" name="reset" value="Reset" onClick="window.location.href=window.location.href" /><input type="submit" name="upload" value="Upload..."/></li>
+              </select>
+              </li>
+              <li><input id="gifname" name="gifname" type="text" placeholder="Type the name of your gif..." th:field="*{name}"/></li>
+              <!--<li>Please choose the category:</li>-->
+
+              <li><input type="reset" name="reset" value="Reset" onClick="window.location.href=window.location.href" /><input type="submit" name="upload" value="Upload..."/></li>
             <li></li>
           </ul>
 

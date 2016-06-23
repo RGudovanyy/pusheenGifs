@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by anvi on 6/18/16.
@@ -52,5 +53,15 @@ public class GifServiceImpl implements GifService{
         return gifAdditionalRepository.findGifByName(name);
     }
 
-
+    public Iterable<Gif> getGifsByCategoryId(Integer categoryId){
+        List<Gif> listGifsByCategory = new ArrayList<Gif>();
+        List<Gif> gifsFromDB = (List<Gif>) listGifs();
+        if(!gifsFromDB.isEmpty()){
+                for(Gif gif : gifsFromDB){
+                    if(gif.getCategoryId() == categoryId)
+                        listGifsByCategory.add(gif);
+                }
+        }
+        return listGifsByCategory;
+    }
 }
