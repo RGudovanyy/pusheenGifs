@@ -1,10 +1,6 @@
 package com.anviprojects.springIntro.controller;
 
 import com.anviprojects.springIntro.AppConfig;
-import com.anviprojects.springIntro.data.CategoryHelper;
-import com.anviprojects.springIntro.data.CategoryRepository;
-import com.anviprojects.springIntro.data.GifRepository;
-import com.anviprojects.springIntro.data.GiftRepository;
 import com.anviprojects.springIntro.model.Category;
 import com.anviprojects.springIntro.model.Gif;
 import com.anviprojects.springIntro.service.CategoryService;
@@ -12,41 +8,33 @@ import com.anviprojects.springIntro.service.GifService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Controller
 public class SpringController {
 
     private GifService gifService;
-    @Autowired
-    private CategoryHelper categoryHelper;
+
+    private CategoryService categoryService;
 
 
     @Autowired
     public void setGifRepository(GifService gifService){
         this.gifService = gifService;
     }
-
+    @Autowired
+    public void setCategoryService(CategoryService categoryService){this.categoryService=categoryService;}
 
     public Iterable<Gif> getGifs(){
         return gifService.listGifs();
     }
-
-
-
 
 
     @RequestMapping("/") //мапируем URI который будет обрабатываться методом
@@ -65,20 +53,9 @@ public class SpringController {
         return "gif-details";
     }
 
-
-    /*
-    @RequestMapping("/gif/{id}")
-    public String gifDetailsById(@PathVariable Integer id, ModelMap modelMap){
-        modelMap.addAttribute("gif", gifService.getGifById(id));
-         return "gif-details";
-    }
-    */
-
     @RequestMapping(method = RequestMethod.GET, value = "/addnew")
     public String addNewGif(ModelMap modelMap){
-        List<Category> allCategories = categoryHelper.getAllCategories();
         modelMap.addAttribute("gif", new Gif());
-        modelMap.addAttribute("categoryList", allCategories);
         return "addnew";
     }
 
@@ -108,6 +85,11 @@ public class SpringController {
     @RequestMapping("/favorites")
     public String favoritesGifs(ModelMap modelMap){
         return "favorites";
+    }
+
+    @ModelAttribute("categories")
+    public Iterable<Category> populateCategories(){
+        return categoryService.listOfCategories();
     }
 }
 

@@ -31,9 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     public void setCategoryRepository (CategoryRepository categoryRepository){
-        this.categoryRepository = categoryRepository;
-    }
-
+        this.categoryRepository = categoryRepository;   }
 
     @Autowired
     public void setCategoryAdditionalRepository(CategoryAdditionalRepository categoryAdditionalRepository){

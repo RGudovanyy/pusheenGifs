@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 /**
  *
  */
-@Component
 public interface CategoryRepository extends CrudRepository<Category, Integer> {
 
 }

@@ -28,12 +28,11 @@ public class CategoryController {
     }
 
 
+    public Iterable<Category> getCategory(){return categoryService.listOfCategories();}
 
     @RequestMapping("/categories")
     public String listCategories(ModelMap modelMap){
-        //categoryService.categoriesAdding();
-        Iterable<Category> allCategories = categoryService.listOfCategories();
-        modelMap.put("categories", allCategories);
+        modelMap.put("categories", getCategory());
 
         return "categories";
     }
@@ -47,8 +46,4 @@ public class CategoryController {
         return "category";
     }
 
-    @ModelAttribute("categoryList")
-    public List<Category> populateCategories(){
-        return (List<Category>) categoryService.listOfCategories();
-    }
 }

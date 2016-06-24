@@ -12,7 +12,7 @@
 
 
 
-    <title>Pushin gifs | Home</title>
+    <title>Pusheen gifs | Home</title>
 
 </head>
 <body>
@@ -48,36 +48,28 @@
     </div>
 </div>
 
-<div class="add-form container">
+    <div class="add-form container">
     <form id="form" th:object="${gif}" th:action="@{/gif}" method="post" enctype="multipart/form-data">
         <div>
             <input type="hidden" th:field="*{id}"/>
             <input type="hidden" th:field="*{username}" value="Anvi"/>
             <input type="hidden" th:field="*{favorite}" value="false"/>
-            <!--<input type="hidden" th:field="*{categoryId}" value="1"/>-->
-          <ul id="gifaddform">
-              <li><input type='file' name="file" size="2" /></li>
-              <li><select th:field="*{categoryId}" >
-                  <option value="0">Select category</option>
-                  <option th:each="category : ${categoryList}" th:value="${category.id}" th:text="${category.name}">Category</option>
-
-              </select>
-              </li>
-              <li><input id="gifname" name="gifname" type="text" placeholder="Type the name of your gif..." th:field="*{name}"/></li>
-              <!--<li>Please choose the category:</li>-->
-
-              <li><input type="reset" name="reset" value="Reset" onClick="window.location.href=window.location.href" /><input type="submit" name="upload" value="Upload..."/></li>
-            <li></li>
-          </ul>
-
-          <input type="button" hidden="hidden" value="q"/> <!-- Без этой хрени картинка предпросмотра располагается некорректно -->
-
+            <ul id="gifaddform">
+                <li><input type="file" name="file" size="2"/></li>
+                <li><input th:field="*{name}" id="gifname" name="gifname" type="text" placeholder="Type the name of your gif"/></li>
+                <li>Please choose the category:</li>
+                <li><select class="categories" th:field="*{categoryId}">
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">Gif category</option>
+                </select>
+                </li>
+                <li><input type="reset" name="reset" value="Reset" onClick="window.location.href=window.location.href" />
+                <input type="submit" name="upload" value="Upload..."/></li>
+                <li></li>
+            </ul>
+            <input type="button" hidden="hidden" value="q"/> <!-- Без этой хрени картинка предпросмотра располагается некорректно -->
         </div>
     </form>
-
-
-</div>
-
+    </div>
 
 <script th:src="@{/vendor/jquery/jquery-1.11.3.js}"></script>
 <script th:src="@{/vendor/materialize/js/materialize.js}"></script>

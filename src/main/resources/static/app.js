@@ -15,7 +15,7 @@ $("input").change(function(e) {
              img.src = reader.result;
         }
         reader.readAsDataURL(file);
-        $("input").after(img);
+        $("input").before(img);
     }
 });
 

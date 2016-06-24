@@ -6,6 +6,7 @@ import com.anviprojects.springIntro.model.Gif;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.NonUniqueResultException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +34,19 @@ public class GifServiceImpl implements GifService{
 
     @Override
     public Gif saveGif(Gif rawGif) {
+        List<Gif> allGifs = (List<Gif>) listGifs();
+        for(Gif gif : allGifs){
+            if(rawGif.getName().equals(gif.getName())) {
+                return gif;
+                //throw new NonUniqueResultException();
+            }
+        }
         if(rawGif.getCategoryId() == 0)
-            rawGif.setCategoryId(1);
+            rawGif.setCategoryId(3);
         if(rawGif.getUsername().equals(null) || rawGif.getUsername().equals(""))
             rawGif.setUsername("Anvi");
         rawGif.setDateUploaded(LocalDate.now());
+
 
         Gif gif = rawGif;
         return gifRepository.save(gif);
