@@ -14,4 +14,6 @@ public interface CategoryService {
     Category getCategoryByName(String name);
 
     void categoriesAdding();
+
+    Category saveCategory(Category category);
 }

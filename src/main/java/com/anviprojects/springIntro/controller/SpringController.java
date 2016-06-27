@@ -62,7 +62,6 @@ public class SpringController {
 
 
     @RequestMapping(value = "gif", method = RequestMethod.POST)
-    //TODO реализовать проверку на дублирующие файлы. Сейчас вылетает Exception NonUniqueResultException
     public String saveGif(Gif gif, @RequestParam("file") MultipartFile file){
         try{
             String filename = file.getOriginalFilename();

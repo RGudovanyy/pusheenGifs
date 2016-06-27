@@ -15,16 +15,7 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-    public void categoriesAdding(){
-        Category category1 = new Category(1, "Pushin Eats");
-        categoryRepository.save(category1);
 
-        Category category2 = new Category(2, "Pushin Plays");
-        categoryRepository.save(category2);
-
-        Category category3 = new Category(3, "Other stuff");
-        categoryRepository.save(category3);
-    }
 
     CategoryRepository categoryRepository;
     CategoryAdditionalRepository categoryAdditionalRepository;
@@ -51,5 +42,21 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category getCategoryByName(String name) {
         return categoryAdditionalRepository.findCategoryByName(name);
+    }
+
+    public void categoriesAdding(){
+        Category category1 = new Category(1, "Pushin Eats");
+        categoryRepository.save(category1);
+
+        Category category2 = new Category(2, "Pushin Plays");
+        categoryRepository.save(category2);
+
+        Category category3 = new Category(3, "Other stuff");
+        categoryRepository.save(category3);
+    }
+
+    @Override
+    public Category saveCategory(Category category) {
+        return categoryRepository.save(category);
     }
 }
