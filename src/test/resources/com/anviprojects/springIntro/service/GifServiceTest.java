@@ -41,8 +41,7 @@ public class GifServiceTest extends AbstractTest {
 
     @Test
     public void testFindOne(){
-        Integer id = gifId; // пока нужно перед каждой итерацией увеличивать id.
-                                    //TODO пофиксить эту хрень
+        Integer id = gifId;
         Gif entity = gifService.getGifById(id);
 
         Assert.assertNotNull("failure - expected not null", entity);
