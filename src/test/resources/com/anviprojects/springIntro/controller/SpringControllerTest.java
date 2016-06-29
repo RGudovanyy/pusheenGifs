@@ -10,17 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
 
-import static org.junit.Assert.*;
 
 /**
  *
  */
 @Transactional
 public class SpringControllerTest extends AbstractControllerTest {
-    //TODO write a unit test here
 
 
     @Autowired
@@ -60,5 +57,7 @@ public class SpringControllerTest extends AbstractControllerTest {
 
         mvc.perform(MockMvcRequestBuilders.get(uri)).andExpect(MockMvcResultMatchers.status().isOk());
     }
+
+
 
 }

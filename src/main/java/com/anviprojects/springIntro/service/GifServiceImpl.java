@@ -3,20 +3,23 @@ package com.anviprojects.springIntro.service;
 import com.anviprojects.springIntro.data.GifAdditionalRepository;
 import com.anviprojects.springIntro.data.GifRepository;
 import com.anviprojects.springIntro.model.Gif;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.NonUniqueResultException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by anvi on 6/18/16.
+ *
  */
 @Service
 public class GifServiceImpl implements GifService{
 
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
     private GifRepository gifRepository;
     private GifAdditionalRepository gifAdditionalRepository;
 
@@ -37,18 +40,21 @@ public class GifServiceImpl implements GifService{
         List<Gif> allGifs = (List<Gif>) listGifs();
         for(Gif gif : allGifs){
             if(rawGif.getName().equals(gif.getName())) {
+                log.warn("The gif " + rawGif.getName() + "already exists");
                 return gif;
-                //throw new NonUniqueResultException();
             }
         }
+
         if(rawGif.getCategoryId() == 0)
-            rawGif.setCategoryId(3);
+            rawGif.setCategoryId(1);
         if(rawGif.getUsername().equals(null) || rawGif.getUsername().equals(""))
+            log.debug("Failed to read the name. Setting the standard name");
             rawGif.setUsername("Anvi");
+        log.debug("Setting the date");
         rawGif.setDateUploaded(LocalDate.now());
 
-
         Gif gif = rawGif;
+        log.info("Write new gif " + gif.getName() + " to the database");
         return gifRepository.save(gif);
     }
 
@@ -63,7 +69,7 @@ public class GifServiceImpl implements GifService{
     }
 
     public Iterable<Gif> getGifsByCategoryId(Integer categoryId){
-        List<Gif> listGifsByCategory = new ArrayList<Gif>();
+        List<Gif> listGifsByCategory = new ArrayList<>();
         List<Gif> gifsFromDB = (List<Gif>) listGifs();
         if(!gifsFromDB.isEmpty()){
                 for(Gif gif : gifsFromDB){
