@@ -31,7 +31,7 @@ public class GifServiceTest extends AbstractTest {
 
     @Test
     public void testFindAll(){
-        Collection<Gif> list = (Collection<Gif>) gifService.listGifs();
+        Collection<Gif> list = (Collection<Gif>) gifService.listOfGifs();
 
         Assert.assertNotNull("failure - expected not null", list);
         Assert.assertEquals("failure - expected size", 1, list.size());

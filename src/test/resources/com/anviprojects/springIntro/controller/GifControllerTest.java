@@ -17,7 +17,7 @@ import java.time.LocalDate;
  *
  */
 @Transactional
-public class SpringControllerTest extends AbstractControllerTest {
+public class GifControllerTest extends AbstractControllerTest {
 
 
     @Autowired

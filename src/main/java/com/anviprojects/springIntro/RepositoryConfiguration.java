@@ -7,10 +7,21 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration // указывает спрингу что это конфигурационный класс
-@EnableAutoConfiguration // включает автоконфиг спринг бута
-@EntityScan(basePackages = {"com.anviprojects.springIntro.model"}) // указываем где хибернейту смотреть entity
-@EnableJpaRepositories(basePackages = {"com.anviprojects.springIntro.data"}) // включаем автоконфиг spring data jpa
+/**
+ * Configuration class to setting up connections with persistance level.
+ * <p>Annotation {@code Configuration} tells to Spring Framework on that class as a configuration
+ * Annotation {@code EnableAutoConfiguration} enables auto configuration Spring Boot
+ * With annotation {@code EntityScan} system tells to Hibernate are located Entities
+ * Annotation {@code EnableJPARepositories} enables auto configuration Spring Data JPA
+ * Annotation {@code EnableTransactionManagement} connect mechanism of transactional management<p/>
+ *
+ * @author Roman Gudovanyy
+ * @version 1.0
+ */
+@Configuration
+@EnableAutoConfiguration
+@EntityScan(basePackages = {"com.anviprojects.springIntro.model"})
+@EnableJpaRepositories(basePackages = {"com.anviprojects.springIntro.data"})
 @EnableTransactionManagement // подключаем управление транзакциями
 public class RepositoryConfiguration {
 }

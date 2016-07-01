@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Interface implementation {@link GifService}
  */
+
 @Service
 public class GifServiceImpl implements GifService{
-
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     private GifRepository gifRepository;
@@ -31,20 +31,19 @@ public class GifServiceImpl implements GifService{
     public void setGifAdditionalRepository(GifAdditionalRepository gifAdditionalRepository){this.gifAdditionalRepository = gifAdditionalRepository;}
 
     @Override
-    public Iterable<Gif> listGifs() {
+    public Iterable<Gif> listOfGifs() {
         return gifRepository.findAll();
     }
 
     @Override
     public Gif saveGif(Gif rawGif) {
-        List<Gif> allGifs = (List<Gif>) listGifs();
+        List<Gif> allGifs = (List<Gif>) listOfGifs();
         for(Gif gif : allGifs){
             if(rawGif.getName().equals(gif.getName())) {
                 log.warn("The gif " + rawGif.getName() + "already exists");
                 return gif;
             }
         }
-
         if(rawGif.getCategoryId() == 0)
             rawGif.setCategoryId(1);
         if(rawGif.getUsername().equals(null) || rawGif.getUsername().equals(""))
@@ -70,7 +69,7 @@ public class GifServiceImpl implements GifService{
 
     public Iterable<Gif> getGifsByCategoryId(Integer categoryId){
         List<Gif> listGifsByCategory = new ArrayList<>();
-        List<Gif> gifsFromDB = (List<Gif>) listGifs();
+        List<Gif> gifsFromDB = (List<Gif>) listOfGifs();
         if(!gifsFromDB.isEmpty()){
                 for(Gif gif : gifsFromDB){
                     if(gif.getCategoryId() == categoryId)
