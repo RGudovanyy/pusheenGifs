@@ -15,8 +15,8 @@ import java.io.File;
  *
  */
 @SpringBootApplication
-@EnableAutoConfiguration // помечаем класс для включения автоконфигурации
-@ComponentScan // указываем сканировать проект на предмет контроллеров
+@EnableAutoConfiguration // mark this class to enable auto configuration
+@ComponentScan // referred to scan the project for controllers
 public class AppConfig {
     private static final Logger log = LoggerFactory.getLogger(AppConfig.class);
 

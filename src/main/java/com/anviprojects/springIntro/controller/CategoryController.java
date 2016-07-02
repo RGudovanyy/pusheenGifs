@@ -64,7 +64,7 @@ public class CategoryController {
      * This method uses param {@code id} to receive on object of {@link Category} class
      * from {@link CategoryService}. Then this param pass to {@link GifService} to
      *  select objects of {@link Gif} class that appropriate previously obtained category
-     * @param id номер категории
+     * @param id number of category
      * @param modelMap
      * @return name of HTML template with the collection of POJO of {@link Gif} class that
      * belongs to this category

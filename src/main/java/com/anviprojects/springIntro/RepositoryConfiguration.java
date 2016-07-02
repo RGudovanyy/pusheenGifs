@@ -22,6 +22,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableAutoConfiguration
 @EntityScan(basePackages = {"com.anviprojects.springIntro.model"})
 @EnableJpaRepositories(basePackages = {"com.anviprojects.springIntro.data"})
-@EnableTransactionManagement // подключаем управление транзакциями
+@EnableTransactionManagement
 public class RepositoryConfiguration {
 }
