@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Interface implementation {@link GifService}
+ * Interface implementation {@code GifService}
+ * {@see GifService}
  */
 
 @Service
@@ -47,8 +48,8 @@ public class GifServiceImpl implements GifService{
         if(rawGif.getCategoryId() == 0)
             rawGif.setCategoryId(1);
         if(rawGif.getUsername().equals(null) || rawGif.getUsername().equals(""))
-            log.debug("Failed to read the name. Setting the standard name");
-            rawGif.setUsername("Anvi");
+            log.debug("Failed to read the username. Setting the standard username");
+            rawGif.setUsername("Default user");
         log.debug("Setting the date");
         rawGif.setDateUploaded(LocalDate.now());
 

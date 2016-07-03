@@ -11,9 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 
 import java.io.File;
 
-/**
- *
- */
 @SpringBootApplication
 @EnableAutoConfiguration // mark this class to enable auto configuration
 @ComponentScan // referred to scan the project for controllers
@@ -27,10 +24,7 @@ public class AppConfig {
 
     }
 
-    /**
-     *
-     * @return
-     */
+
     @Bean
     CommandLineRunner init(){
         return (String[] args) -> {

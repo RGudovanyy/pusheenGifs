@@ -52,14 +52,23 @@
     <form id="form" th:object="${gif}" th:action="@{/gif}" method="post" enctype="multipart/form-data">
         <div>
             <input type="hidden" th:field="*{id}"/>
-            <input type="hidden" th:field="*{username}" value="Anvi"/>
+            <input type="hidden" th:field="*{username}" value="DefaultUser"/>
             <input type="hidden" th:field="*{favorite}" value="false"/>
             <ul id="gifaddform">
                 <li><input type="file" name="file" size="2"/></li>
-                <li><input th:field="*{name}" id="gifname" name="gifname" type="text" placeholder="Type the name of your gif"/></li>
+                <li><input th:field="*{name}" id="gifname" name="gifname" required="required" type="text"
+                           placeholder="Type the name of your gif" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
+                            title="You should use english characters, digits and/or symbols '- _ .'"
+                /></li>
                 <li>Please choose the category:</li>
                 <li><select class="categories" th:field="*{categoryId}">
-                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">Gif category</option>
+                    <!--<option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}">Gif category</option>
+                    -->
+                    <div>
+                        <option selected="true" value="1">Pusheen eats</option>
+                        <option value="2">Pusheen plays</option>
+                        <option value="3">Other stuff</option>
+                    </div>
                 </select>
                 </li>
                 <li><input type="reset" name="reset" value="Reset" onClick="window.location.href=window.location.href" />

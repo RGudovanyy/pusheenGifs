@@ -107,7 +107,7 @@ public class GifController {
     @RequestMapping(value = "gif", method = RequestMethod.POST)
     public String saveGif(Gif gif, @RequestParam("file") MultipartFile file){
         try{
-            String filename = file.getOriginalFilename();
+            String filename = gif.getName() + ".gif";
             String filepath = Paths.get(AppConfig.ROOT + "/" + filename).toString();
 
             BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(filepath)));

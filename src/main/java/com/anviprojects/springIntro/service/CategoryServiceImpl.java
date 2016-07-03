@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * Interface implementation {@link CategoryService}
+ * Interface implementation {@code CategoryService}
+ * {@see CategoryService}
  */
 @Service
 public class CategoryServiceImpl implements CategoryService {
